@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-import vercel_wsgi
 
 app = Flask(__name__, template_folder="../templates")
 
@@ -15,4 +14,6 @@ def menu():
 def jogo():
     return render_template('jogo.html')
 
-handler = vercel_wsgi.handle(app)
+# ✅ Vercel precisa disso para rodar como WSGI
+def handler(environ, start_response):
+    return app.wsgi_app(environ, start_response)
