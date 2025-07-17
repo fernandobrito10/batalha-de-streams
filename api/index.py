@@ -14,6 +14,5 @@ def menu():
 def jogo():
     return render_template('jogo.html')
 
-# ✅ Vercel precisa disso para rodar como WSGI
-def handler(environ, start_response):
-    return app.wsgi_app(environ, start_response)
+if __name__ == "__main__":
+    app.run()
