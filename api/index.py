@@ -1,6 +1,7 @@
 from flask import Flask, render_template
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../templates")
 
 @app.route('/')
 def index():
@@ -14,5 +15,5 @@ def menu():
 def jogo():
     return render_template('jogo.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+def handler(environ, start_response):
+    return app.wsgi_app(environ, start_response)
