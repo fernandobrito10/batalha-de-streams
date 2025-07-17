@@ -13,7 +13,7 @@ def criar_json(lista_musicas, nome_artista):
         json.dump(musicas_json, outfile, ensure_ascii=False, indent=4)
     print(f"{nome_artista}.json criado com sucesso!")
 
-with open("top15beatles.txt", "r", encoding="utf-8") as arquivo:
+with open("top15queen.txt", "r", encoding="utf-8") as arquivo:
     lista_beatles = [linha.strip() for linha in arquivo]
 
-criar_json(lista_beatles, "The Beatles")
+criar_json(lista_beatles, "Queen")
