@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from werkzeug.middleware.dispatcher import DispatcherMiddleware
+import vercel_wsgi
 
 app = Flask(__name__, template_folder="../templates")
 
@@ -15,5 +15,4 @@ def menu():
 def jogo():
     return render_template('jogo.html')
 
-def handler(environ, start_response):
-    return app.wsgi_app(environ, start_response)
+handler = vercel_wsgi.handle(app)
